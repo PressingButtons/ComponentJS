@@ -3,6 +3,7 @@ export default class Component extends EventTarget {
   #children = new Map( );
 
   constructor(name, options) {
+    super( );
     Object.defineProperty(this, 'name', {value: name});
     if(options.namespace) Object.defineProperty(this, 'namespace', {value: options.namespace});
     if(this.namespace) Object.defineProperty(this, 'body', {value: document.createElementNS(this.namespace, options.type || 'div', options)});

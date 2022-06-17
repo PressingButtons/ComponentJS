@@ -6,8 +6,6 @@ Object.defineProperty(window, "ComponentLib", {value: { }});
 
  Object.defineProperties(ComponentLib, {
    Component: {value: Component},
-   preset: {value: Object.defineProperties({}, {
-     Panel: {value: Panel},
-     Table: {value: Table}
-   });
+   Panel: {value: Panel},
+   Table: {value: Table}
 })

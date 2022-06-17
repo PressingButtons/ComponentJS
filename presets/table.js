@@ -3,7 +3,7 @@ import Component from '../component.js';
 export default class TableComponent extends Component {
 
   constructor(name, options) {
-    super(name, Object.assign(options, {type: 'table'});
+    super(name, Object.assign(options, {type: 'table'}));
     Object.defineProperty(this, 'header', {value: document.createElement('thead')});
     Object.defineProperty(this, 'content', {value: document.createElement('tbody')});
     this.setTable(options);
