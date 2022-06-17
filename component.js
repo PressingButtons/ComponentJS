@@ -63,8 +63,8 @@ export default class Component extends EventTarget {
   }
 
   unpackOptions(options) {
-    if(options.className) this.body.className = className;
-    if(options.style) this.body.style = style;
+    if(options.className) this.body.className = options.className;
+    if(options.style) this.body.style = options.style;
   }
 
 }
