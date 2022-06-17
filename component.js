@@ -21,12 +21,39 @@ export default class Component extends EventTarget {
     else return object.appendChild(this.body);
   }
 
+  get children( ) {
+    return this.#children.values( );
+  }
+
+  removeChild(name) {
+    const component = this.#children.get(name);
+    component.body.remove( );
+    map.delete(name);
+    delete this[name];
+    return component;
+  }
+
+  removeChildren( ) {
+    const it = this.#children.values( );
+    const components = [ ];
+    for(const component of it) {
+      components.push(removeChild(component));
+    }
+    return components;
+  }
+
   rewrite(text) {
     this.body.innerHTML = text;
   }
 
+  get numChildren( ) {
+    return this.#children.size;
+  }
+
   setComponent(component) {
     this.body.appendChild(component.body);
+    this.#children.add(component.name, component);
+    Object.defineProperty(this, component.name, {value: component, configurable: true});
     return component;
   }
 
