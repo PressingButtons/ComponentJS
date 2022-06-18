@@ -53,7 +53,7 @@ export default class Component extends EventTarget {
 
   setComponent(component) {
     this.body.appendChild(component.body);
-    this.#children.add(component.name, component);
+    this.#children.set(component.name, component);
     Object.defineProperty(this, component.name, {value: component, configurable: true});
     return component;
   }
