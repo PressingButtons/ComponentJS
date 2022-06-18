@@ -5,7 +5,7 @@ export default class Component extends EventTarget {
   constructor(name, options) {
     super( );
     Object.defineProperty(this, 'name', {value: name});
-    if(options.namespace) Object.defineProperty(this, 'namespace', {value: options.namespace});
+    if(options.namespace != undefined) Object.defineProperty(this, 'namespace', {value: options.namespace});
     if(this.namespace) Object.defineProperty(this, 'body', {value: document.createElementNS(this.namespace, options.type || 'div', options)});
     else Object.defineProperty(this, 'body', {value: document.createElement(options.type || 'div', options)});
     this.unpackOptions(options);
