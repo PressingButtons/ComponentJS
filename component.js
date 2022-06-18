@@ -11,6 +11,18 @@ export default class Component extends EventTarget {
     this.unpackOptions(options);
   }
 
+  #setAttributes(attributes) {
+    for(const attr in attributes) {
+      if(this.namespace) this.body.setAttributeNS(null, attr, attributes[attr]);
+      else this.body.setAttribute(attr, attributes[attr]);
+    }
+  }
+
+  #setClassName(className) {
+    if(this.namespace) this.body.className.baseVal = className;
+    else this.body.className = className;
+  }
+
   addComponent(name, options) {
     if(this.namespace) options.namespace = this.namespace;
     const component = new Component(name, options);
@@ -63,8 +75,11 @@ export default class Component extends EventTarget {
   }
 
   unpackOptions(options) {
-    if(options.className) this.body.className = options.className;
+    if(options.id) this.body.id = id;
+    if(options.className) this.#setClassName(options.className);
+    if(options.attributes) this.#setAttributes(options.attributes);
     if(options.style) this.body.style = options.style;
+
   }
 
 }
