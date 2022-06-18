@@ -7,7 +7,7 @@ export default class PanelComponent extends Component {
     this.addComponent('header', {type: 'div', style: "display: flex; justify-content: space-between;", className: "panel_header"});
     this.header.addComponent('title', {type: 'h1', className: "panel_title"});
     this.header.addComponent('ui', {type: 'div', style: 'display: flex'});
-    this.header.ui.addComponent('close', {type: p, className: "panel_close"});
+    this.header.ui.addComponent('close', {type: "p", className: "panel_close"});
     this.addComponent('content', {type: "div", style: "flex: 1; padding: 6px;", className: "panel_content"});
   }
 
