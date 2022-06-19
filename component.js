@@ -78,7 +78,7 @@ export default class Component extends EventTarget {
     if(options.id) this.body.id = options.id;
     if(options.className) this.#setClassName(options.className);
     if(options.attributes) this.#setAttributes(options.attributes);
-    if(options.style) this.body.style = options.style;
+    if(options.style) this.body.style.cssText = options.style;
 
   }
 
