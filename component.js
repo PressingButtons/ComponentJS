@@ -11,6 +11,31 @@ export default class Component extends EventTarget {
     this.unpackOptions(options);
   }
 
+  #parseElement(text) {
+    const type = text.match(/\w+/)[0];
+    let id = text.match(/(?<=#)\w+/);
+    if(id) id = id[0];
+    const classes = text.match(/(?<=\.)[^\W]+/g);
+    const attributes = { };
+    const attrArray = text.match(/(?<=\()[^\)]+/).map( x => {let data = x.split(":"); return {name: data[0], value: data[1]}});
+    for(const x of attrArray) Object.assign(attributes, x);
+    return this.addComponent(attributes.name, config);
+  }
+
+  #parseContainer(container, content) {
+    this.#parseElement(container);
+  }
+
+  #parseInject(text) {
+    const container = this.#parseElement(text.match(/^[^{]*/));
+      if(container) {
+        const content = text.match(/(?<=\{)[^\}]+/)[0].split(',');
+        if(content)
+          for(const entry of content)
+          container.setComponent(entry);
+      }
+  }
+
   #setAttributes(attributes) {
     for(const attr in attributes) {
       if(this.namespace) this.body.setAttributeNS(null, attr, attributes[attr]);
@@ -36,6 +61,10 @@ export default class Component extends EventTarget {
 
   get children( ) {
     return this.#children.values( );
+  }
+
+  inject(...params) {
+    for(const param of parms) this.#parseInject(param);
   }
 
   removeChild(name) {
