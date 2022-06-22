@@ -14,7 +14,7 @@ export default class FormComponent extends Component {
   }
 
   addSection(name, content) {
-    const section = this.form.contnet.addComponent(name, {className: "form_section"});
+    const section = this.form.content.addComponent(name, {className: "form_section"});
     this.sections[name] = section;
     section.addComponent('header', {type: 'h1', className: "header"});
     section.header.write(name);
