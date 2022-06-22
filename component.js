@@ -64,6 +64,7 @@ export default class Component extends EventTarget {
   }
 
   inject(...params) {
+    console.log(params);
     for(const param of parms) this.#parseInject(param);
   }
 
