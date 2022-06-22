@@ -64,12 +64,7 @@ export default class Component extends EventTarget {
   }
 
   inject(...params) {
-<<<<<<< HEAD
     for(const param of params) this.#parseInject(param);
-=======
-    console.log(params);
-    for(const param of parms) this.#parseInject(param);
->>>>>>> e8c70c3e02fece54c3825bc034f7ca615f8badee
   }
 
   removeChild(name) {
