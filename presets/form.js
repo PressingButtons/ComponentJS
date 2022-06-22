@@ -18,7 +18,7 @@ export default class FormComponent extends Component {
     this.sections[name] = section;
     section.addComponent('header', {type: 'h1', className: "header"});
     section.header.write(name);
-    section.addSection('content', {className: "content"});
+    section.addComponent('content', {className: "content"});
   }
 
 }
