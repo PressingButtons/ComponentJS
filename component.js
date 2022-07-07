@@ -48,7 +48,7 @@ export default class Component extends EventTarget {
     else this.body.className = className;
   }
 
-  addComponent(name, options) {
+  addComponent(name, options = {}) {
     if(this.namespace) options.namespace = this.namespace;
     const component = new Component(name, options);
     return this.setComponent(component);
