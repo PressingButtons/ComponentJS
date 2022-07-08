@@ -6,7 +6,7 @@ export default class FormComponent extends Component {
     super(name, {className: "form_component", style: "display:flex; flex-flow: column nowrap;"});
     this.addComponent('header', {className: "form_header", type: "h1"});
     this.header.write(name);
-    this.addComponent("form", {type: 'form', attributes: {className: "form_form"}});
+    this.addComponent("form", {type: 'form', attributes: {}, className: 'form_form'});
     this.form.addComponent('content', {className: "form_component"});
     this.form.addComponent("buttons", {className: "form_buttons"});
     this.form.buttons.addComponent("submit", {type: "button", attributes: {type: "submit"}, className: "form_submit"});
